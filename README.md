@@ -128,6 +128,8 @@ register/belege.csv       Alle Belege mit Aufteilung und Begründung.
 belege/                   Die Dateien selbst. Nicht versioniert.
   _eingang/               Posteingang: hier alles reinwerfen, unsortiert.
 tools/steuerbro.py        Das Werkzeug.
+tools/nas-sync.sh         Läuft auf dem NAS: holt neue Belege ab und
+                          schiebt Scans in den Eingang.
 docs/                     Warum das alles so ist.
 ```
 
@@ -157,6 +159,7 @@ docs/                     Warum das alles so ist.
 | [`docs/04-spielregeln.md`](docs/04-spielregeln.md) | Was geht, was nicht, und warum sich das rechnet |
 | [`docs/05-fallstricke.md`](docs/05-fallstricke.md) | Die acht teuersten Fehler, nach Kosten sortiert |
 | [`docs/06-so-arbeiten-wir.md`](docs/06-so-arbeiten-wir.md) | Der Chat-Workflow: Rechnung schicken, Rest passiert |
+| [`docs/07-nas-einbindung.md`](docs/07-nas-einbindung.md) | NAS als Archiv und Scan-Eingang anbinden |
 
 ---
 

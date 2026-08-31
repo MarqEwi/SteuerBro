@@ -32,6 +32,16 @@ Details in `docs/04-spielregeln.md`.
 
 ---
 
+## Woher Belege kommen
+
+Zwei Wege, beide enden in `belege/_eingang/`:
+
+- **Direkt im Chat.** Ich lege die Datei selbst in den Eingang.
+- **Über seinen NAS.** Sein Scanner legt auf dem NAS ab, `tools/nas-sync.sh`
+  läuft dort per Cron und lädt die Dateien hoch. Zu Beginn einer Session
+  also in den Eingang schauen — da kann etwas liegen, das er nicht
+  erwähnt hat. Einrichtung in `docs/07-nas-einbindung.md`.
+
 ## Wenn er mir eine Rechnung schickt
 
 Standard-Ablauf. Nicht davon abweichen, ohne es zu sagen.
@@ -75,6 +85,9 @@ verloren. Der Container ist flüchtig, nur das Repository überlebt.
 - Committen und auf den Arbeitsbranch pushen
 - Ihm sagen, was noch offen ist (fehlende Beträge, fehlende Begründungen,
   unbearbeitete Dateien in `belege/_eingang/`)
+- Solange `belege/**` in `.gitignore` steht, überleben die Dateien selbst
+  den Session-Wechsel nicht. Umgestellt wird erst, wenn das Repository
+  privat ist.
 
 ## Was ich einmal im Quartal von mir aus anspreche
 
