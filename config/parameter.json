@@ -1,0 +1,96 @@
+{
+  "_hinweis": "Steuerrechtliche Parameter. NICHT im Code hartkodiert, damit du/dein Steuerberater sie jaehrlich pruefen und anpassen kannst. Jeder Wert hat ein Stand-Datum und eine Fundstelle.",
+  "_stand": "2026-08-31",
+  "_pruefung_faellig": "2027-01-31",
+  "_disclaimer": "Diese Werte sind nach bestem Wissen erfasst, aber ohne Gewaehr. Vor der Abgabe der Steuererklaerung gegen die aktuelle Fassung des Gesetzes oder mit dem Steuerberater abgleichen.",
+
+  "umsatzsteuer": {
+    "regelsatz": 0.19,
+    "ermaessigt": 0.07,
+    "fundstelle": "§ 12 UStG"
+  },
+
+  "kleinunternehmer": {
+    "grenze_vorjahr": 25000,
+    "grenze_laufendes_jahr": 100000,
+    "fundstelle": "§ 19 UStG (Fassung ab 2025)",
+    "hinweis": "Als Kleinunternehmer KEIN Vorsteuerabzug. Dafuer ist der Bruttobetrag Betriebsausgabe. Der Verzicht auf die Kleinunternehmerregelung bindet 5 Jahre."
+  },
+
+  "arbeitnehmer_pauschbetrag": {
+    "betrag": 1230,
+    "fundstelle": "§ 9a Satz 1 Nr. 1a EStG",
+    "hinweis": "KRITISCH: Werbungskosten bei nichtselbstaendiger Arbeit (Bundeswehr) wirken erst ab dem 1231. Euro. Die ersten 1230 EUR bringen exakt null zusaetzliche Ersparnis, weil sie ohnehin pauschal gewaehrt werden."
+  },
+
+  "sonderausgaben_erstausbildung": {
+    "hoechstbetrag": 6000,
+    "fundstelle": "§ 10 Abs. 1 Nr. 7 EStG",
+    "hinweis": "GROESSTE FALLE: Kosten der ERSTausbildung sind nur Sonderausgaben. Sonderausgaben sind NICHT vortragsfaehig. Wer im Studium wenig oder kein zu versteuerndes Einkommen hat, verliert sie ersatzlos. Kosten der ZWEITausbildung / Fortbildung sind dagegen Werbungskosten und erzeugen einen Verlustvortrag."
+  },
+
+  "gwg": {
+    "grenze_netto": 800,
+    "sammelposten_von": 250,
+    "sammelposten_bis": 1000,
+    "fundstelle": "§ 6 Abs. 2 und 2a EStG",
+    "hinweis": "Bis 800 EUR netto sofort voll abziehbar. Darueber grundsaetzlich Abschreibung ueber die Nutzungsdauer."
+  },
+
+  "computer_nutzungsdauer_jahre": {
+    "wert": 1,
+    "fundstelle": "BMF-Schreiben vom 22.02.2022, IV C 3 - S 2190/21/10002:025",
+    "hinweis": "STARKER HEBEL: Computerhardware und Software duerfen mit einer Nutzungsdauer von 1 Jahr angesetzt werden. Damit ist auch ein Laptop fuer 2500 EUR im Anschaffungsjahr SOFORT voll abziehbar - die 800-EUR-GWG-Grenze spielt hier keine Rolle."
+  },
+
+  "paragraf_35a": {
+    "handwerkerleistung_satz": 0.20,
+    "handwerkerleistung_hoechstbetrag": 1200,
+    "haushaltsnahe_dl_satz": 0.20,
+    "haushaltsnahe_dl_hoechstbetrag": 4000,
+    "fundstelle": "§ 35a EStG",
+    "hinweis": "Fuer die SELBSTGENUTZTE Wohnung. Achtung: nur der LOHN-, Fahrt- und Maschinenanteil zaehlt, NIEMALS Material. Und: Ueberweisung zwingend, Barzahlung wird nicht anerkannt. Wirkt direkt auf die Steuerschuld (Abzug von der Steuer, nicht vom Einkommen) - deshalb sehr wertvoll."
+  },
+
+  "anschaffungsnaher_herstellungsaufwand": {
+    "grenze_anteil_gebaeude_ak": 0.15,
+    "zeitraum_jahre": 3,
+    "fundstelle": "§ 6 Abs. 1 Nr. 1a EStG",
+    "hinweis": "TIMING-FALLE bei Immobilien: Uebersteigen die Instandsetzungskosten in den ersten 3 Jahren nach Anschaffung 15 % der Gebaeude-Anschaffungskosten (netto), werden sie ZWINGEND aktiviert und nur ueber ca. 50 Jahre abgeschrieben statt sofort abgezogen. Aus 10000 EUR Sofortabzug werden dann 200 EUR pro Jahr."
+  },
+
+  "solidaritaetszuschlag": {
+    "satz": 0.055,
+    "freigrenze_esr_einzeln": 19950,
+    "fundstelle": "§ 4 SolzG",
+    "hinweis": "Faellt fuer die grosse Mehrheit nicht mehr an. Im Profil auf false setzen, wenn du ihn nicht zahlst."
+  },
+
+  "gewerbesteuer": {
+    "freibetrag_einzelunternehmen": 24500,
+    "anrechnungsfaktor_est": 3.8,
+    "fundstelle": "§ 11 Abs. 1 GewStG, § 35 EStG",
+    "hinweis": "Bei einem Nebengewerbe unterhalb 24500 EUR Gewerbeertrag faellt keine Gewerbesteuer an. Darueber wird sie weitgehend auf die Einkommensteuer angerechnet. Deshalb im Modell standardmaessig mit 0 bewertet."
+  },
+
+  "verpflegungsmehraufwand": {
+    "ab_8_stunden": 14,
+    "ganztags_24_stunden": 28,
+    "fundstelle": "§ 9 Abs. 4a EStG",
+    "hinweis": "Ohne jeden Beleg absetzbar. Fuer Bundeswehr-Lehrgaenge, Uebungen und auswaertige Taetigkeit oft der groesste einzelne Posten ueberhaupt."
+  },
+
+  "entfernungspauschale": {
+    "je_km_bis_20": 0.30,
+    "je_km_ab_21": 0.38,
+    "dienstreise_je_km": 0.30,
+    "fundstelle": "§ 9 Abs. 1 Nr. 4 und Abs. 4a EStG",
+    "hinweis": "Entfernungspauschale = einfache Strecke zur ersten Taetigkeitsstaette. Dienstreise/Auswaertstaetigkeit = tatsaechlich gefahrene Kilometer, also hin UND zurueck."
+  },
+
+  "homeoffice_tagespauschale": {
+    "je_tag": 6,
+    "hoechstbetrag_jahr": 1260,
+    "fundstelle": "§ 4 Abs. 5 Satz 1 Nr. 6c EStG"
+  }
+}

@@ -1,0 +1,14 @@
+# Belege enthalten personenbezogene und finanzielle Daten.
+# Sie gehören NICHT in ein Git-Repository - auch nicht in ein privates.
+belege/**
+!belege/**/
+!belege/**/.gitkeep
+
+# Das Register wird bewusst versioniert: es ist dein Arbeitsstand und
+# die Historie deiner Zuordnungsentscheidungen. Prüfe trotzdem, dass
+# dieses Repository auf privat steht.
+!register/belege.csv
+
+*.pyc
+__pycache__/
+.DS_Store

@@ -1,0 +1,74 @@
+{
+  "_hinweis": "DEINE persoenliche Situation. Das Tool rechnet mit diesen Werten. Je ehrlicher und aktueller sie sind, desto besser die Empfehlung. Alles mit TODO markierte bitte ausfuellen.",
+  "_stand": "TODO: Datum eintragen, wenn du es zuletzt geprueft hast",
+  "steuerjahr": 2026,
+
+  "grenzsteuersatz": {
+    "_erklaerung": "Der Satz, mit dem dein NAECHSTER verdienter bzw. gesparter Euro besteuert wird. NICHT der Durchschnittssatz. Findest du im letzten Steuerbescheid oder mit dem Rechner des BMF (bmf-steuerrechner.de): einmal mit deinem zvE rechnen, einmal mit zvE + 1000, die Differenz durch 1000 teilen.",
+    "aktuell": 0.30,
+    "_todo": "TODO: echten Wert eintragen. 0.30 ist nur eine Annahme.",
+    "erwartet_kuenftig": 0.42,
+    "_erklaerung_kuenftig": "Dein erwarteter Satz in den Jahren, in denen ein heutiger Verlustvortrag wirksam wird (z.B. nach dem Studium, im ersten vollen Berufsjahr). Treibt die Bewertung des Fortbildungs-Topfes."
+  },
+
+  "soli_faellig": false,
+  "kirchensteuer": {
+    "faellig": false,
+    "satz": 0.09,
+    "_hinweis": "Kirchensteuer erhoeht den effektiven Grenzsteuersatz und damit den Wert JEDER Betriebsausgabe und Werbungskosten."
+  },
+
+  "gewerbe": {
+    "aktiv": true,
+    "bezeichnung": "TODO: Name des Nebengewerbes",
+    "regelbesteuert": true,
+    "_erklaerung_regelbesteuert": "true = du weist Umsatzsteuer aus und ziehst Vorsteuer. Das ist der mit Abstand staerkste Hebel: 19 % kommen sofort zurueck, unabhaengig vom Steuersatz. false = Kleinunternehmer nach § 19 UStG, keine Vorsteuer.",
+    "gewinn_erwartet": 0,
+    "_todo_gewinn": "TODO: erwarteter Jahresgewinn. Wichtig fuer die Liebhaberei-Warnung.",
+    "jahre_aktiv": 1,
+    "_hinweis_liebhaberei": "Wenn das Gewerbe ueber Jahre nur Verluste produziert, kann das Finanzamt es als 'Liebhaberei' einstufen und ALLE Betriebsausgaben rueckwirkend streichen. Dann kippt die gesamte Optimierung. Ab ca. dem 3.-5. Verlustjahr ernst nehmen."
+  },
+
+  "arbeitnehmer": {
+    "aktiv": true,
+    "bezeichnung": "Bundeswehr",
+    "_hinweis": "Werbungskosten hier wirken erst oberhalb des Pauschbetrags von 1230 EUR. Das Tool rechnet das automatisch mit ein."
+  },
+
+  "ausbildung": {
+    "aktiv": true,
+    "bezeichnung": "TODO: Studiengang",
+    "typ": "zweitausbildung",
+    "_erklaerung_typ": "'erstausbildung' = du hattest vorher KEINE abgeschlossene Berufsausbildung und kein abgeschlossenes Studium -> nur Sonderausgaben, meist wertlos. 'zweitausbildung' = du hast bereits eine abgeschlossene Ausbildung oder ein abgeschlossenes Studium, ODER das Studium ist berufsbegleitend zu deinem Dienst -> Werbungskosten, voll wirksam und vortragsfaehig. TODO: pruefen, welcher Fall bei dir vorliegt. Das ist die einzelne folgenreichste Angabe in dieser Datei.",
+    "zugehoerige_einkunftsart": "arbeitnehmer",
+    "_erklaerung_zugehoerig": "Zu welcher Einkunftsart die Fortbildungskosten gehoeren. Bei einem Studium neben dem Dienst meist 'arbeitnehmer' (dann greift der Pauschbetrag), bei Bezug zum Nebengewerbe 'gewerbe' (dann nicht).",
+    "zve_voraussichtlich_null": false,
+    "_erklaerung_zve": "true, wenn dein zu versteuerndes Einkommen in diesem Jahr voraussichtlich unter dem Grundfreibetrag liegt. Dann sind Sonderausgaben wertlos und Werbungskosten wandern in den Verlustvortrag."
+  },
+
+  "immobilien": [
+    {
+      "kuerzel": "OBJ1",
+      "_todo": "TODO: Kuerzel und Daten anpassen, weitere Objekte ergaenzen",
+      "bezeichnung": "TODO: Strasse Hausnummer, Ort",
+      "vermietet": true,
+      "anschaffung_datum": "TODO: JJJJ-MM-TT",
+      "gebaeude_ak_netto": 0,
+      "_erklaerung_ak": "Anschaffungskosten NUR des Gebaeudes ohne Grund und Boden, netto. Basis fuer die 15-Prozent-Grenze beim anschaffungsnahen Herstellungsaufwand.",
+      "umsatzsteuerpflichtig_vermietet": false,
+      "_erklaerung_ustpflichtig": "Wohnraumvermietung ist nach § 4 Nr. 12a UStG umsatzsteuerFREI -> KEIN Vorsteuerabzug. Nur bei Gewerbevermietung mit Option nach § 9 UStG waere Vorsteuer moeglich."
+    }
+  ],
+
+  "selbstgenutzte_immobilie": {
+    "vorhanden": true,
+    "_hinweis": "Relevant fuer § 35a: Handwerkerleistungen und haushaltsnahe Dienstleistungen im eigenen Haushalt. Der Topf fuer alles, was NICHT absetzbar aussieht."
+  },
+
+  "_verbrauchte_hoechstbetraege": {
+    "_hinweis": "Wird vom Tool aus dem Register berechnet, hier nur als manuelle Korrekturmoeglichkeit, falls Belege ausserhalb des Systems erfasst wurden.",
+    "arbeitnehmer_wk_bereits": 0,
+    "paragraf_35a_handwerker_bereits": 0,
+    "sonderausgaben_ausbildung_bereits": 0
+  }
+}
