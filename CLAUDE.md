@@ -40,7 +40,13 @@ Zwei Wege, beide enden in `belege/_eingang/`:
 - **Über seinen NAS.** Sein Scanner legt auf dem NAS ab, `tools/nas-sync.sh`
   läuft dort per Cron und lädt die Dateien hoch. Zu Beginn einer Session
   also in den Eingang schauen — da kann etwas liegen, das er nicht
-  erwähnt hat. Einrichtung in `docs/07-nas-einbindung.md`.
+  erwähnt hat. Einrichtung: `tools/nas-setup.sh`, Hintergrund in
+  `docs/07-nas-einbindung.md`.
+
+**Direktzugriff auf den NAS per VPN ist geprüft und verworfen** — Gründe
+in `docs/07-nas-einbindung.md`. Kurz: die Session ist flüchtig, die
+Schlüssel müssten ins Repository, und es spart ihm keinen Handgriff.
+Nicht erneut aufrollen, wenn er fragt — auf den Abschnitt verweisen.
 
 ## Wenn er mir eine Rechnung schickt
 

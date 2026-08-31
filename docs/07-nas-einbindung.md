@@ -48,90 +48,80 @@ Voraussetzung dieser gesamten Konstruktion.
 
 ## Einrichtung
 
-### 1. Repository auf privat stellen
+### Schritt 1: Repository auf privat stellen
 
-`github.com/MarqEwi/SteuerBro` → Settings → General → ganz unten
-"Change repository visibility" → Private.
+`github.com/MarqEwi/SteuerBro` -> Settings -> General -> ganz unten
+"Change repository visibility" -> Private.
 
 **Vor dem ersten echten Beleg.** Ohne diesen Schritt keinen der nächsten.
 
-### 2. Belegdateien versionieren
+### Schritt 2: Belegdateien versionieren
 
-Standardmäßig sind die Belege von der Versionierung ausgenommen — solange das
-Repository öffentlich war, wäre alles andere fahrlässig gewesen. Sobald es
-privat ist, kannst du die Dateien mitversionieren, damit der NAS sie ziehen
-kann und ich sie in künftigen Sessions sehe.
+Solange das Repository öffentlich war, waren die Belege bewusst von der
+Versionierung ausgenommen. Sobald es privat ist, wird die Zeile `belege/**`
+in `.gitignore` auskommentiert — erst dann kommen die Scans überhaupt beim
+System an. Sag Bescheid, dann mache ich das.
 
-In `.gitignore` diese Zeile auskommentieren:
+`tools/nas-sync.sh` warnt ausdrücklich, solange das noch aussteht: sonst
+liefe der Sync scheinbar erfolgreich, während die Scans den NAS nie
+verlassen.
 
-```
-# belege/**
-```
+### Schritt 3: Das Einrichtungsskript laufen lassen
 
-Sag mir Bescheid, dann mache ich das und committe es.
-
-### 3. Zugang für den NAS anlegen
-
-Der NAS braucht Leserechte auf das private Repository. Zwei Wege:
-
-**Deploy Key (empfohlen).** Gilt nur für dieses eine Repository, nicht für
-deinen ganzen GitHub-Account.
-
-Auf dem NAS per SSH:
-```bash
-ssh-keygen -t ed25519 -C "nas-steuerbro" -f ~/.ssh/steuerbro
-cat ~/.ssh/steuerbro.pub
-```
-Den ausgegebenen Schlüssel bei GitHub eintragen unter
-Repository → Settings → Deploy keys → Add deploy key.
-Häkchen bei "Allow write access" nur setzen, wenn der NAS auch pushen soll
-(brauchst du für den Scanner-Workflow in Schritt 5).
-
-**Personal Access Token.** Einfacher, aber weitreichender. Nur nehmen, wenn
-SSH auf dem NAS nicht geht.
-
-### 4. Repository auf den NAS klonen
+Per SSH auf dem NAS anmelden, dann:
 
 ```bash
-cd /volume1/daten          # Synology; bei QNAP z. B. /share/daten
-git clone git@github.com:MarqEwi/SteuerBro.git
+git clone https://github.com/MarqEwi/SteuerBro.git /tmp/sb-setup
+sh /tmp/sb-setup/tools/nas-setup.sh
 ```
 
-### 5. Automatisch synchronisieren
+Das Skript erledigt den Rest: Schlüssel erzeugen, SSH einrichten, Repository
+klonen, Scan-Ordner anlegen, täglichen Sync eintragen, Testlauf. Es fragt
+nur nach den Verzeichnissen und hält einmal an, damit du den angezeigten
+Deploy Key bei GitHub einträgst — mit **Häkchen bei "Allow write access"**,
+sonst kann der NAS nichts hochladen.
 
-Im Repository liegt `tools/nas-sync.sh`. Das Skript holt neue Belege ab,
-schiebt eingescannte Dateien in den Eingang und lädt sie hoch.
+Das Skript ist idempotent: Ein zweiter Lauf repariert eine unvollständige
+Einrichtung, statt etwas doppelt anzulegen.
 
-Auf dem NAS einrichten:
+Kann das Skript den Cron-Eintrag nicht selbst setzen (auf Synology der
+Normalfall), gibt es die fertige Befehlszeile aus. Die trägst du ein unter
+Systemsteuerung -> Aufgabenplaner -> Erstellen -> Geplante Aufgabe ->
+Benutzerdefiniertes Skript, täglich um 3:00 Uhr.
 
-**Synology:** Systemsteuerung → Aufgabenplaner → Erstellen → Geplante Aufgabe
-→ Benutzerdefiniertes Skript. Täglich, z. B. 3:00 Uhr:
-```
-/volume1/daten/SteuerBro/tools/nas-sync.sh /volume1/daten/SteuerBro /volume1/scans/steuer
-```
+### Schritt 4: Scanner umstellen
 
-**QNAP:** Systemsteuerung → Hardware → Energieplan, oder direkt per crontab.
+Multifunktionsdrucker so einstellen, dass er in den Scan-Ordner aus Schritt 3
+scannt. Für unterwegs dasselbe mit der NAS-App auf dem Handy (Synology DS
+file, QNAP Qfile): Foto in den Ordner, fertig.
 
-**Generisch (crontab):**
-```
-0 3 * * * /pfad/zu/SteuerBro/tools/nas-sync.sh /pfad/zu/SteuerBro /pfad/zu/scans
-```
-
-Der zweite Parameter ist optional. Gibst du ihn an, verschiebt das Skript
-alles aus diesem Ordner nach `belege/_eingang/` und lädt es hoch — dann
-landen Scans automatisch bei mir.
-
-### 6. Scanner einrichten
-
-Stell deinen Multifunktionsdrucker so ein, dass er auf den NAS scannt, in
-genau den Ordner aus Schritt 5. Ab da gilt: **Rechnung einlegen, Knopf
-drücken, fertig.** Beim nächsten Lauf des Skripts liegt sie im Eingang, und
-ich arbeite sie ab, sobald du dich meldest.
-
-Für unterwegs dasselbe mit der NAS-App auf dem Handy (Synology DS file /
-QNAP Qfile): Foto in den Scan-Ordner, Rest passiert von allein.
+**Ab hier ist dein einziger Handgriff im Alltag: Rechnung einlegen, Knopf
+drücken.**
 
 ---
+
+## Warum kein VPN, kein WireGuard, kein Direktzugriff
+
+Die naheliegende Frage. Die Antwort ist nein, aus drei Gründen — und keiner
+davon kostet dich etwas.
+
+**1. Die Session ist flüchtig.** Jedes Gespräch läuft in einem neuen
+Container. Ein Tunnel müsste bei jedem Gespräch neu aufgebaut werden, mit
+Schlüsseln, die dafür dauerhaft irgendwo liegen müssten — also im
+Repository. Ein WireGuard-Private-Key in der Git-Historie ist unwiderruflich
+drin und öffnet jedem, der das Repository je zu sehen bekommt, einen Weg ins
+Heimnetz. Das ist schlechter als jede Alternative hier.
+
+**2. Der Netzverkehr läuft absichtlich über einen kontrollierten Proxy.**
+Ein Tunnel wäre die Umgehung genau dieser Grenze.
+
+**3. Es würde keinen einzigen Handgriff sparen.** Das ist der eigentliche
+Punkt. Das Ziel ist, keine Dateien anfassen zu müssen. Der Cron-Job erledigt
+das vollständig. Ob eine Datei per VPN geholt oder per Git geschickt wird,
+ist von außen betrachtet derselbe Vorgang: null Handgriffe.
+
+Der Aufwand steckt nicht im Weg, sondern in der einmaligen Einrichtung — und
+die nimmt `tools/nas-setup.sh` ab.
 
 ## Wenn du GitHub gar nicht willst
 

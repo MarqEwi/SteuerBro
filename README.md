@@ -128,7 +128,9 @@ register/belege.csv       Alle Belege mit Aufteilung und Begründung.
 belege/                   Die Dateien selbst. Nicht versioniert.
   _eingang/               Posteingang: hier alles reinwerfen, unsortiert.
 tools/steuerbro.py        Das Werkzeug.
-tools/nas-sync.sh         Läuft auf dem NAS: holt neue Belege ab und
+tools/nas-setup.sh        Einmal auf dem NAS ausführen: richtet Schlüssel,
+                          Klon, Scan-Ordner und täglichen Sync ein.
+tools/nas-sync.sh         Läuft danach per Cron: holt neue Belege ab und
                           schiebt Scans in den Eingang.
 docs/                     Warum das alles so ist.
 ```
