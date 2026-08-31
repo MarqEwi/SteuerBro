@@ -1,0 +1,75 @@
+{
+  "_zweck": "Chronik aller Arbeits-, Ausbildungs- und Einkunftsverhaeltnisse. Bestimmt, welche Toepfe fuer einen Beleg ueberhaupt in Frage kommen - und zwar abhaengig vom Belegdatum. Ein Beleg aus Maerz 2024 gehoert zu den Verhaeltnissen, die im Maerz 2024 bestanden.",
+  "_ausfuellen": "Diktier mir deine Verhaeltnisse einfach im Chat, ich trage sie hier ein. Wichtig sind: Art, Zeitraum, Bezeichnung. Die Beispiele unten sind Platzhalter und muessen ersetzt werden.",
+  "_stand": "TODO: Datum der letzten Aktualisierung",
+
+  "_hinweis_pauschbetrag": "WICHTIG: Der Arbeitnehmer-Pauschbetrag von 1230 EUR gilt EINMAL PRO JAHR fuer ALLE nichtselbstaendigen Taetigkeiten zusammen - nicht je Arbeitsverhaeltnis. Zwei Jobs verdoppeln ihn nicht.",
+
+  "verhaeltnisse": [
+    {
+      "kuerzel": "BW",
+      "art": "arbeitnehmer",
+      "topf": "AN",
+      "bezeichnung": "TODO: Bundeswehr - Dienstgrad, Einheit, Standort",
+      "von": "TODO: JJJJ-MM-TT",
+      "bis": null,
+      "_bis": "null bedeutet: laeuft noch",
+      "erste_taetigkeitsstaette": "TODO: Ort - entscheidet ueber Entfernungspauschale (einfache Strecke) statt Dienstreise (Hin- und Rueckweg)",
+      "entfernung_km": 0,
+      "doppelte_haushaltsfuehrung": false,
+      "notizen": "TODO: Lehrgaenge, Uebungen, Versetzungen mit Zeitraeumen - relevant fuer Verpflegungsmehraufwand (14 EUR ab 8 h, 28 EUR ganztags, ohne Beleg)"
+    },
+    {
+      "kuerzel": "GEW1",
+      "art": "gewerbe",
+      "topf": "GEW",
+      "bezeichnung": "TODO: Name und Taetigkeit des Nebengewerbes",
+      "von": "TODO: JJJJ-MM-TT",
+      "bis": null,
+      "rechtsform": "Einzelunternehmen",
+      "regelbesteuert": true,
+      "_regelbesteuert": "TODO PRUEFEN: true = Umsatzsteuer wird ausgewiesen, Vorsteuerabzug moeglich (rund 16 Prozentpunkte mehr je Anschaffung). false = Kleinunternehmer nach Paragraf 19 UStG.",
+      "notizen": "TODO: Was genau wird angeboten? Bestimmt, welche Anschaffungen plausibel betrieblich sind."
+    },
+    {
+      "kuerzel": "STUD",
+      "art": "ausbildung",
+      "topf": "FOB",
+      "bezeichnung": "TODO: Studiengang, Hochschule",
+      "von": "TODO: JJJJ-MM-TT",
+      "bis": null,
+      "typ": "TODO: erstausbildung ODER zweitausbildung",
+      "_typ": "DIE TEUERSTE FRAGE IM GANZEN SYSTEM. zweitausbildung/Fortbildung = Werbungskosten, unbegrenzt, vortragsfaehig. erstausbildung = Sonderausgaben, max 6000 EUR, NICHT vortragsfaehig, verfallen bei geringem Einkommen ersatzlos. Voraussetzung fuer zweitausbildung: bereits abgeschlossene Berufsausbildung oder abgeschlossenes Studium, ODER Studium neben einem bestehenden Dienstverhaeltnis.",
+      "vorherige_abschluesse": "TODO: Welche Ausbildung/welches Studium hast du bereits ABGESCHLOSSEN? Genau das entscheidet den Typ oben.",
+      "notizen": ""
+    },
+    {
+      "kuerzel": "OBJ1",
+      "art": "vermietung",
+      "topf": "VUV",
+      "bezeichnung": "TODO: Strasse Hausnummer, Ort",
+      "von": "TODO: JJJJ-MM-TT (Beginn der Vermietung)",
+      "bis": null,
+      "anschaffung_datum": "TODO: JJJJ-MM-TT (Kaufdatum, nicht Vermietungsbeginn)",
+      "gebaeude_ak_netto": 0,
+      "_gebaeude_ak": "TODO: Anschaffungskosten NUR des Gebaeudes ohne Grund und Boden. Basis fuer die 15-Prozent-Grenze beim anschaffungsnahen Herstellungsaufwand - die teuerste Falle im System.",
+      "umsatzsteuerpflichtig_vermietet": false,
+      "notizen": "TODO: Wohnung oder Gewerbe? Selbst verwaltet oder Hausverwaltung?"
+    },
+    {
+      "kuerzel": "EIGEN",
+      "art": "selbstgenutzt",
+      "topf": "P35A",
+      "bezeichnung": "TODO: Selbstgenutzte Wohnung/Haus",
+      "von": "TODO: JJJJ-MM-TT",
+      "bis": null,
+      "notizen": "Topf fuer Handwerkerleistungen im eigenen Haushalt: 20 Prozent des LOHNanteils, max 1200 EUR pro Jahr, direkt von der Steuerschuld. Nur bei Ueberweisung, nie bei Barzahlung. Material zaehlt nie."
+    }
+  ],
+
+  "_offene_fragen": [
+    "Studium: Erst- oder Zweitausbildung? Siehe typ bei STUD.",
+    "Gewerbe: Kleinunternehmer oder regelbesteuert?",
+    "Gewerbe: Wie ist die Gewinnsituation? Dauerverluste bergen das Liebhaberei-Risiko."
+  ]
+}

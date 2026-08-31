@@ -114,6 +114,11 @@ EMPFOHLENE AUFTEILUNG:
 ## Aufbau
 
 ```
+CLAUDE.md                 Arbeitsanweisung. Wird bei jedem Session-Start
+                          geladen und ist damit das Gedächtnis über
+                          Gespräche hinweg.
+profil/verhaeltnisse.json Chronik der Arbeits-, Ausbildungs- und
+                          Einkunftsverhältnisse mit Zeiträumen.
 config/parameter.json     Steuerliche Grenzwerte, mit Fundstelle und Stand.
                           Jährlich prüfen - deshalb nicht im Code.
 profil/profil.json        Deine Situation: Grenzsteuersatz, Gewerbe,
@@ -151,6 +156,7 @@ docs/                     Warum das alles so ist.
 | [`docs/03-ablage-und-namen.md`](docs/03-ablage-und-namen.md) | Namenskonvention, Ordner, Alltags-Workflow |
 | [`docs/04-spielregeln.md`](docs/04-spielregeln.md) | Was geht, was nicht, und warum sich das rechnet |
 | [`docs/05-fallstricke.md`](docs/05-fallstricke.md) | Die acht teuersten Fehler, nach Kosten sortiert |
+| [`docs/06-so-arbeiten-wir.md`](docs/06-so-arbeiten-wir.md) | Der Chat-Workflow: Rechnung schicken, Rest passiert |
 
 ---
 
